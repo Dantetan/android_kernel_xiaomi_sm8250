@@ -203,11 +203,11 @@ build_target() {
 
     # 2. KernelSU configurations
     if [ "$ENABLE_KSU" -eq 1 ]; then
-        echo "[*] Injecting KernelSU & SUSFS configurations..."
+        echo "[*] Injecting KernelSU configurations..."
         scripts/config --file "${OUT_DIR}/.config" \
             -e KSU \
             -e THREAD_INFO_IN_TASK \
-            -e KSU_SUSFS
+            -e KSU_MANUAL_HOOK
     fi
 
     # 3. MIUI configurations
