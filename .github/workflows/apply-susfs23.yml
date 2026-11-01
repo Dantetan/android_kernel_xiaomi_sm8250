@@ -28,16 +28,12 @@ jobs:
           git revert --no-edit 306f7988de023f607004441858d9ddfe1e4686df
           git revert --no-edit 78820ec5547eb285f83051f2e08e41e330fab6b6
 
-      - name: Apply SuSFS v2.3.0 patch
+      - name: Cherry-pick SuSFS v2.3.0 integration
         run: |
-          curl -L -o /tmp/susfs23.patch https://raw.githubusercontent.com/JackA1ltman/NonGKI_Kernel_Build_2nd/mainline/Patches/Patch/susfs_patch_to_4.19.patch
-          wc -l /tmp/susfs23.patch
-          head -3 /tmp/susfs23.patch
-          git apply -v /tmp/susfs23.patch
+          set -x
+          git cherry-pick 0b8a115ddd4125dbda533a607f8de8ef2a08d56e
 
-      - name: Commit and push
+      - name: Push
         run: |
-          git status --short
-          git add -A
-          git commit -m "fs: Integrate SuSFS v2.3.0"
+          git log --oneline -6
           git push origin HEAD:android16-aptusitu
