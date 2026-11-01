@@ -207,7 +207,7 @@ build_target() {
         scripts/config --file "${OUT_DIR}/.config" \
             -e KSU \
             -e THREAD_INFO_IN_TASK \
-            -e KSU_MANUAL_HOOK
+            -e KSU_SUSFS
     fi
 
     # 3. MIUI configurations
